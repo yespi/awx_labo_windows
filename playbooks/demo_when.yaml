@@ -1,8 +1,0 @@
----
-- hosts: "{{ hosts }}"
-  become: true
-  tasks:
-    - name: Creamos directoio c:\ts_data\test
-      file:
-        path: c:\ts_data\test
-        state: directory
