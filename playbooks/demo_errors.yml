@@ -1,0 +1,10 @@
+---
+- hosts: "{{ hosts }}"
+  tasks:
+    - name: get files
+      win_uri:
+        url: "http://{{ hosts }}"
+      ignore_errors: true
+    - name: tarea2
+      debug:
+        msg: "punto 2"

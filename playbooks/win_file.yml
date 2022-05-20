@@ -1,0 +1,23 @@
+---
+- hosts: "{{ hosts }}"
+  tasks:
+   - name: Creamos directorio C:\Temp
+     win_file:
+       path: C:\Temp
+       state: directory
+   - name: Crear fichero {{ filename }} con contenido
+     win_copy:
+       dest: "C:\\Temp\\{{ filename }}.txt"
+       content: "{{ contenido }}"
+     when: contenido is defined
+   - name: Nos aseguramos que el usuario {{ fileowner }} existe
+     win_user:
+       name: "{{ fileowner }}"
+       description: "usuario creado por ansible"
+       state: present
+       groups:
+         - Users
+   - name: Seteamos permisos {{ filegroup }} a fichero
+     win_owner:
+       path: "C:\\Temp\\{{ filename }}.txt"
+       user: "{{ fileowner }}"

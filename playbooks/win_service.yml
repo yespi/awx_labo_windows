@@ -1,0 +1,13 @@
+---
+- hosts: "{{ hosts }}"
+  tasks:
+   - name: Stop service {{ servicio }} Print Spooler - accion {{ accion }}
+     win_service:
+      name: "{{ servicio }}"
+      state: "{{ accion }}"
+      #start_mode: disabled
+
+      #Comandos en powershell para validar 
+      #Get-Service Spooler
+      #Start-Service Spooler
+      #Stop-Service Spooler
