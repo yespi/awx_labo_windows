@@ -1,0 +1,6 @@
+    all:
+      hosts:
+        windows01: ''
+        windows02: ''
+        windows03: ''
+        
