@@ -1,2 +1,10 @@
 ---
 # defaults file for apache
+---
+# defaults file for apache
+apache_download_dir: 'C:\Users\rlujan\Downloads\apache'
+
+apache_packages:
+ - httpd
+
+apache_service: httpd
