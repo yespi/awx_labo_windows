@@ -1,10 +1,8 @@
 ---
 # defaults file for apache
----
-# defaults file for apache
-apache_download_dir: 'C:\Users\rlujan\Downloads\apache'
+apache_download_dir: 'C:\ts_data\apache'
 
 apache_packages:
  - httpd
 
-apache_service: httpd
+apache_service: Apache2.2

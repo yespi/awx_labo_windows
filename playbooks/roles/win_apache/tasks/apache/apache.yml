@@ -22,22 +22,21 @@
 
 - name: Copy a index.html file
   win_copy:
-    src: index.html 
+    src: index.html.renzo 
     dest: C:\Program Files (x86)\Apache Software Foundation\Apache2.2\htdocs\index.html
 
 - name: Check if Service Apache2.2 exists
   win_service:
-     name: "{{ apache_service }}"
-  register: apache_service_log
+    name: Apache2.2 
+  register: apache_service 
 
 #- name: debug
 #  debug:
-#    var: apache_service_log
+#    var: apache_service
 
 - name: create apache service
   win_shell: '"C:\Program Files (x86)\Apache Software Foundation\Apache2.2\bin\httpd.exe" -k install'
   args:
     executable: cmd
   notify: Start Service Apache2.2
-  when: not apache_service_log.exists
-  
+  when: not apache_service.exists
