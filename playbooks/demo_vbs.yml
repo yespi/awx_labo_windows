@@ -1,0 +1,24 @@
+---
+- hosts: "{{ hosts }}"
+  tasks:
+    - name: creamos ts_data
+      win_file:
+        path: C:\ts_data
+        state: directory
+      ignore_errors: true
+
+    - name: Copiamos el script 
+      win_copy:
+        src: /tools/git_repositories/ansible_guzafra/windows/MSOPS/InfoServerJSON.vbs
+        dest: C:\ts_data\
+        force: no
+      ignore_errors: true
+
+    - name: Run a script using an executable in a non-system path
+      ansible.builtin.script: /tools/git_repositories/ansible_guzafra/windows/MSOPS/InfoServerJSON.vbs
+        args:
+          executable: c:\windows\system32\cscript.exe
+        register: salida
+
+    - debug: msg="{{ salida.stdout }}"
+      

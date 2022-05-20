@@ -1,0 +1,13 @@
+---
+- hosts: "{{ hosts }}"
+  tasks:
+    - name: Run multi-lined shell commands
+      win_shell: |
+        $value = Test-Path -Path C:\tempo
+        if ($value) {
+           Remove-Item -Path C:\tempo -Force
+        }
+        New-Item -Path C:\tempo -ItemType Directory
+      register: salida
+
+    - debug: msg="{{ salida.stdout }}"
